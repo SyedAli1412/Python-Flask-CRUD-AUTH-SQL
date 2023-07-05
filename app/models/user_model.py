@@ -9,6 +9,8 @@ class User(db.Model):
     password = db.Column(db.String(100), nullable=False)
     confirm_password = db.Column(db.String(100), nullable=False)
     products = db.relationship('Product', backref='user', lazy=True)
+    sender = db.relationship('Message', backref='user', lazy=True)
+    receiver = db.relationship('Message', backref='user', lazy=True)
 
 
     def create(self):

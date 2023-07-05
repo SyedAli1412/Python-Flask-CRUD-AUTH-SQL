@@ -1,5 +1,5 @@
-from app import app
+from app import app, socketio
 from app.routes import *
 
 if __name__ == "__main__":
-    app.run()
+    socketio.run(app, allow_unsafe_werkzeug=True, debug=True)
