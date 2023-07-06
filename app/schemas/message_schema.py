@@ -1,6 +1,6 @@
 from marshmallow_sqlalchemy import SQLAlchemySchema
 from marshmallow import fields
-from app.models.message_model import Message
+from app.models.models import Message
 
 
 class MessageSchema(SQLAlchemySchema):

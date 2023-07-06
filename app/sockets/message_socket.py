@@ -1,5 +1,5 @@
 from flask_socketio import Namespace
-
+from app.models.models import Message
 from app import socketio
 from flask import request
 class MessageSocket(Namespace):
@@ -14,14 +14,13 @@ class MessageSocket(Namespace):
         print('New User sign in!\The users are:', MessageSocket.users)
 
     @socketio.on('disconnect')
-    def on_disconnect():
+    def on_disconnect(self):
         MessageSocket.users.pop(request.sid, 'No user found')
         socketio.emit('current_users', MessageSocket.users)
         print("User disconnected!\nThe users are: ", MessageSocket.users)
 
     @socketio.on('message')
     def messaging(message):
-        print('recieved message: ' + str(message))
         message['from'] = request.sid
         recipient_name = message['to']
         recipient_sid = None
@@ -36,6 +35,8 @@ class MessageSocket(Namespace):
             message_save = {'message': message['text'], 'sender_id': message['sender_id'],
                             'receiver_id': message['receiver_id']}
             print("Message:", message_save)
+            message_to_save = Message(**message_save)
+            return message_to_save.create()
 
 
 

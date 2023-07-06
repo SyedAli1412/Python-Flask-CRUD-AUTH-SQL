@@ -1,4 +1,4 @@
-from app.models.product_model import Product
+from app.models.models import Product
 from app import db
 
 class ProductService:

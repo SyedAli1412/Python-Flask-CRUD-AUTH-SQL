@@ -1,6 +1,6 @@
 from marshmallow_sqlalchemy import SQLAlchemySchema
 from marshmallow import fields
-from app.models.user_model import User
+from app.models.models import User
 
 class UserSchema(SQLAlchemySchema):
     class Meta:

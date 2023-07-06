@@ -1,7 +1,7 @@
 from marshmallow_sqlalchemy import SQLAlchemySchema
 from marshmallow import fields
 from app import db
-from app.models.product_model import Product
+from app.models.models import Product
 
 class ProductSchema(SQLAlchemySchema):
     class Meta(SQLAlchemySchema.Meta):

@@ -29,10 +29,11 @@ def get_all_users():
 def create_user():
     try:
         data = request.get_json()
+        print(data)
 
-        errors = user_schema.validate(data, session=db.session)
-        if errors:
-            return make_response(jsonify(errors), 400)
+        # errors = user_schema.validate(data, session=db.session)
+        # if errors:
+        #     return make_response(jsonify(errors), 400)
 
         user = UserService.create_user(data)
         result = user_schema.dump(user)
